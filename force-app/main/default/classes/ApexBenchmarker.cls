@@ -67,9 +67,9 @@ public with sharing class ApexBenchmarker {
      * Author: Stephen Moss
      * Date: 08/08/2021
      */
-    public void reportResults(Integer loops) {
+    public void reportResults(String testName, Integer loops) {
         // check if end time is set
-        if (referenceEndTime == null) {
+        if (targetEndTime == null) {
             markTargetEndTime();
         }
 
@@ -82,6 +82,17 @@ public with sharing class ApexBenchmarker {
         // Overall Duration
         Integer benchmarkResults = targetDuration - 
             referenceDuration;
+
+        System.debug(LoggingLevel.ERROR, '**********************************');
+        System.debug(LoggingLevel.ERROR, 'TEST - ' + testName);
+        System.debug(LoggingLevel.ERROR, '**********************************');
+
+        System.debug(LoggingLevel.ERROR, 'Ref Start Time: ' + referenceStartTime);
+        System.debug(LoggingLevel.ERROR, 'Ref End Time: ' + referenceEndTime);
+        System.debug(LoggingLevel.ERROR, 'Ref Duration: ' + referenceDuration);
+        System.debug(LoggingLevel.ERROR, 'Target Start Time: ' + targetStartTime);
+        System.debug(LoggingLevel.ERROR, 'Target End Time: ' + targetEndTime);
+        System.debug(LoggingLevel.ERROR, 'Target Duration: ' + targetDuration);
 
         // Time in microseconds is duration
         // * 1000 / loops
