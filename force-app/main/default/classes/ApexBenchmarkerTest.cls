@@ -49,7 +49,7 @@ public with sharing class ApexBenchmarkerTest {
         ApexBenchmarker testBenchmark = new ApexBenchmarker();
 
         List<List<Integer>> numbers = new List<List<Integer>>();
-        List<List<Integer>> emptyList = new List<List<Integer>>();
+        List<Integer> emptyList = new List<Integer>();
 
         Test.startTest();
 
