@@ -44,6 +44,8 @@ public with sharing class ApexBenchmarkerTest {
      */
     static @IsTest
     public void allocateNewTest(){
+
+        System.Debug(LoggingLevel.ERROR, '***Starting allocateNewTest...');
         
         // create class to measure benchmarking
         ApexBenchmarker testBenchmark = new ApexBenchmarker();
@@ -55,12 +57,14 @@ public with sharing class ApexBenchmarkerTest {
 
         // benchmark code testing
         testBenchmark.markReferenceStartTime();
+        System.Debug(LoggingLevel.ERROR, '***Populating Empty List...');
         for (Integer x = 0; x < 1000000; x++) {
             numbers.add(emptyList);
         }
         testBenchmark.markReferenceEndTime();
 
         testBenchmark.markTargetStartTime();
+        System.Debug(LoggingLevel.ERROR, '***Populating Non-Empty List...');
         for (Integer x = 0; x < 1000000; x++) {
             // add a new list
             numbers.add(new List<Integer>{x});
