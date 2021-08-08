@@ -47,7 +47,7 @@ public with sharing class ApexBenchmarker {
      * Author: Stephen Moss
      * Date: 08/08/2021
      */
-     public void markReferenceEndTime() {
+     public void markTargetStartTime() {
          targetStartTime = Limits.getCpuTime();
      }
 
