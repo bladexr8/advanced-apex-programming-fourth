@@ -9,7 +9,8 @@ public with sharing class ApexBenchmarkerTest {
     
     /**
      * Method Name: benchMarkTest()
-     * Description: Test Benchmark Code
+     * Description: Test Benchmark Code for
+     *              looping using primitives
      * Author: Stephen Moss
      * Date: 08/08/2021
      */
@@ -38,7 +39,8 @@ public with sharing class ApexBenchmarkerTest {
 
     /**
      * Method Name: allocateNewTest()
-     * Description: Test Benchmark Code
+     * Description: Test Benchmark Code for
+     *              creation and initialising lists
      * Author: Stephen Moss
      * Date: 08/08/2021
      */
@@ -70,6 +72,45 @@ public with sharing class ApexBenchmarkerTest {
             numbers.add(new List<Integer>{x});
         }
         testBenchmark.reportResults('allocateNewTest', 1000000);
+
+        Test.stopTest();
+        
+    }
+
+    /**
+     * Method Name: schemaDescribeTest()
+     * Description: Test Benchmark Code for
+     *              usage of getGlobalDescribe
+     *              SObject function in Apex
+     * Author: Stephen Moss
+     * Date: 09/08/2021
+     */
+    static @IsTest
+    public void schemaDescribeTest(){
+
+        System.Debug(LoggingLevel.ERROR, '***Starting schemaDescribeTest...');
+        
+        // create class to measure benchmarking
+        ApexBenchmarker testBenchmark = new ApexBenchmarker();
+
+        List<List<Integer>> numbers = new List<List<Integer>>();
+        List<Integer> emptyList = new List<Integer>();
+
+        Test.startTest();
+
+        // benchmark code testing
+        testBenchmark.markReferenceStartTime();
+        for (Integer x = 0; x < 1000000; x++) {
+            numbers.add(emptyList);
+        }
+        testBenchmark.markReferenceEndTime();
+
+        testBenchmark.markTargetStartTime();
+        for (Integer x = 0; x < 1000000; x++) {
+            // add a new list
+            numbers.add(new List<Integer>{x});
+        }
+        testBenchmark.reportResults('schemaDescribeTest', 1000);
 
         Test.stopTest();
         
