@@ -100,15 +100,16 @@ public with sharing class ApexBenchmarkerTest {
 
         // benchmark code testing
         testBenchmark.markReferenceStartTime();
-        for (Integer x = 0; x < 1000000; x++) {
-            numbers.add(emptyList);
+        for (Integer x = 0; x < 1; x++) {
+            Map<String, Schema.SObjectType> describeInfo = 
+                Schema.getGlobalDescribe();
         }
         testBenchmark.markReferenceEndTime();
 
         testBenchmark.markTargetStartTime();
-        for (Integer x = 0; x < 1000000; x++) {
-            // add a new list
-            numbers.add(new List<Integer>{x});
+        for(Integer x = 0; x < 1000; x++) {
+            Map<String, Schema.SObjectType> describeInfo = 
+                Schema.getGlobalDescribe();
         }
         testBenchmark.reportResults('schemaDescribeTest', 1000);
 
